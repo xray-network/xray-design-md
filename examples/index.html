@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XRAY Examples</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-panel: #ffffff;
+      --border: #e5e7eb;
+      --fg-1: #0e0e18;
+      --fg-2: #374151;
+      --fg-3: #6e758d;
+      --accent: #1940ed;
+      --accent-hover: #3f5ff0;
+    }
+
+    html[data-theme="dark"] {
+      --bg: #000000;
+      --bg-panel: #0e0e18;
+      --border: #1e2232;
+      --fg-1: #ffffff;
+      --fg-2: #d1d5db;
+      --fg-3: #6e758d;
+      --accent: #1940ed;
+      --accent-hover: #3f5ff0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--fg-2);
+      font-family: "Satoshi Variable", "Satoshi", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      display: block;
+      padding: 24px 16px;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+    }
+
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .theme-toggle {
+      height: 34px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--fg-1);
+      padding: 0 12px;
+      font-size: 14px;
+      font-family: inherit;
+      font-weight: 500;
+      cursor: pointer;
+      transition: border-color 120ms ease, background-color 120ms ease;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      background: rgba(25, 64, 237, 0.12);
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--fg-1);
+      font-size: 30px;
+      line-height: 1;
+      letter-spacing: -0.01em;
+    }
+
+    p {
+      margin: 10px 0 0;
+      color: var(--fg-3);
+      font-size: 14px;
+    }
+
+    ul {
+      margin: 20px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0;
+    }
+
+    .example-item {
+      padding: 20px 0;
+    }
+
+    .item-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--fg-1);
+    }
+
+    .path {
+      font-size: 12px;
+      color: var(--fg-3);
+      margin-top: 2px;
+      font-family: "DM Mono", "Fira Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    }
+
+    .open-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      padding: 0 12px;
+      border-radius: 100px;
+      border: 0;
+      background: var(--accent);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      transition: background-color 120ms ease;
+    }
+
+    .open-btn:hover {
+      background: var(--accent-hover);
+    }
+
+    .prompt-collapse {
+      margin-top: 10px;
+    }
+
+    .prompt-collapse summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .prompt-collapse summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .prompt-chevron {
+      color: var(--fg-3);
+      flex-shrink: 0;
+      transition: transform 160ms ease;
+    }
+
+    .prompt-collapse[open] .prompt-chevron {
+      transform: rotate(180deg);
+    }
+
+    .prompt-label {
+      color: var(--fg-3);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .prompt-body {
+      margin-top: 6px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      align-items: start;
+    }
+
+    .prompt-full {
+      margin: 0;
+      color: var(--fg-2);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .copy-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: 0;
+      background: transparent;
+      color: var(--fg-2);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 120ms ease, color 120ms ease;
+    }
+
+    .copy-btn:hover {
+      color: var(--fg-1);
+      background: var(--border);
+    }
+
+    .divider-item {
+      padding: 0;
+      margin: 0;
+    }
+
+    .divider {
+      margin: 0;
+      border: 0;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="top">
+      <h1>XRAY Example Pages</h1>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">Switch to Dark</button>
+    </div>
+    <p>Open any example below.</p>
+
+    <ul>
+      <li>
+        <div class="example-item">
+          <div class="item-head">
+            <div>
+              <div class="name">Send Form</div>
+              <div class="path">examples/send-form/index.html</div>
+            </div>
+            <a class="open-btn" href="./send-form/index.html">Open Example</a>
+          </div>
+          <details class="prompt-collapse">
+            <summary>
+              <span class="prompt-label">Prompt</span>
+              <svg class="prompt-chevron" viewBox="0 0 16 16" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </summary>
+            <div class="prompt-body">
+              <p id="prompt-send" class="prompt-full">Create examples/send-form as a pure HTML/CSS implementation (no frameworks) with styles in a separate CSS file, strictly following the conventions in DESIGN.md, with a working dark/light theme toggle where the background is #000 in dark mode and #fff in light mode, capped at 800px max-width, featuring a security icon with trust/security messaging, and implementing a two-step crypto multi-asset send flow: step 1 is a form to select and fill in multiple assets/amounts/recipient, and step 2 is an awaiting transaction signature confirmation/loading state.</p>
+              <button class="copy-btn" type="button" data-copy-target="prompt-send" aria-label="Copy prompt">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="9" y="9" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </button>
+            </div>
+          </details>
+        </div>
+      </li>
+      <li class="divider-item"><hr class="divider" /></li>
+      <li>
+        <div class="example-item">
+          <div class="item-head">
+            <div>
+              <div class="name">Swap Form</div>
+              <div class="path">examples/swap-form/index.html</div>
+            </div>
+            <a class="open-btn" href="./swap-form/index.html">Open Example</a>
+          </div>
+          <details class="prompt-collapse">
+            <summary>
+              <span class="prompt-label">Prompt</span>
+              <svg class="prompt-chevron" viewBox="0 0 16 16" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </summary>
+            <div class="prompt-body">
+              <p id="prompt-swap" class="prompt-full">Create examples/swap-form as a pure HTML/CSS implementation (no frameworks) with styles in a separate CSS file, following DESIGN.md conventions, capped at 800px max-width, with a dark/light theme toggle and a two-step swap confirmation flow.</p>
+              <button class="copy-btn" type="button" data-copy-target="prompt-swap" aria-label="Copy prompt">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="9" y="9" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </button>
+            </div>
+          </details>
+        </div>
+      </li>
+      <li class="divider-item"><hr class="divider" /></li>
+      <li>
+        <div class="example-item">
+          <div class="item-head">
+            <div>
+              <div class="name">Stake Form</div>
+              <div class="path">examples/stake-form/index.html</div>
+            </div>
+            <a class="open-btn" href="./stake-form/index.html">Open Example</a>
+          </div>
+          <details class="prompt-collapse">
+            <summary>
+              <span class="prompt-label">Prompt</span>
+              <svg class="prompt-chevron" viewBox="0 0 16 16" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </summary>
+            <div class="prompt-body">
+              <p id="prompt-stake" class="prompt-full">Create examples/stake-form as a pure HTML/CSS implementation (no frameworks) with styles in a separate CSS file, following DESIGN.md conventions, capped at 800px max-width, with a dark/light theme toggle and a two-step staking confirmation flow.</p>
+              <button class="copy-btn" type="button" data-copy-target="prompt-stake" aria-label="Copy prompt">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="9" y="9" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </button>
+            </div>
+          </details>
+        </div>
+      </li>
+      <li class="divider-item"><hr class="divider" /></li>
+      <li>
+        <div class="example-item">
+          <div class="item-head">
+            <div>
+              <div class="name">Mini Game</div>
+              <div class="path">examples/mini-game/index.html</div>
+            </div>
+            <a class="open-btn" href="./mini-game/index.html">Open Example</a>
+          </div>
+          <details class="prompt-collapse">
+            <summary>
+              <span class="prompt-label">Prompt</span>
+              <svg class="prompt-chevron" viewBox="0 0 16 16" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </summary>
+            <div class="prompt-body">
+              <p id="prompt-mini-game" class="prompt-full">Create examples/mini-game as a pure HTML/CSS implementation (no frameworks) with a static mini game interface only (no game logic), following DESIGN.md visual conventions and capped at 800px max-width.</p>
+              <button class="copy-btn" type="button" data-copy-target="prompt-mini-game" aria-label="Copy prompt">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="9" y="9" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </button>
+            </div>
+          </details>
+        </div>
+      </li>
+    </ul>
+  </main>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("themeToggle");
+
+      function setTheme(theme) {
+        if (theme === "dark") {
+          root.setAttribute("data-theme", "dark");
+          themeToggle.textContent = "Switch to Light";
+        } else {
+          root.removeAttribute("data-theme");
+          themeToggle.textContent = "Switch to Dark";
+        }
+        localStorage.setItem("xray-index-theme", theme);
+      }
+
+      themeToggle.addEventListener("click", function () {
+        const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        setTheme(next);
+      });
+
+      const savedTheme = localStorage.getItem("xray-index-theme");
+      setTheme(savedTheme === "dark" ? "dark" : "light");
+
+      document.addEventListener("click", function (event) {
+        const btn = event.target.closest(".copy-btn");
+        if (!btn) {
+          return;
+        }
+
+        const id = btn.getAttribute("data-copy-target");
+        const source = id ? document.getElementById(id) : null;
+        if (!source) {
+          return;
+        }
+
+        const text = source.textContent || "";
+        navigator.clipboard.writeText(text).then(function () {
+          const prev = btn.getAttribute("aria-label");
+          btn.setAttribute("aria-label", "Copied");
+          setTimeout(function () {
+            btn.setAttribute("aria-label", prev || "Copy prompt");
+          }, 1200);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

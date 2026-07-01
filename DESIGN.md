@@ -1,13 +1,13 @@
 ---
 # ============================================================================
 # XRAY Design System — machine-parseable tokens
-# Dark-theme defaults. All hex verified against the source kit.
+# Light-theme defaults. All hex verified against the source kit.
 # ============================================================================
 meta:
   name: XRAY Design System
   tagline: "Content-first finance — a quiet canvas, one electric blue, data is the only color"
-  theme: dark            # brand-primary default
-  themes: [dark, light]  # light is opt-in via <html data-theme="light">
+  theme: light           # default
+  themes: [light, dark]  # dark is opt-in via <html data-theme="dark">
   namespace: XRAYDesignSystem_b0c12a
 
 colors:
@@ -62,12 +62,12 @@ colors:
     shadow-menu:  "rgba(0,0,0,0.5)"
     shadow-modal: "rgba(0,0,0,0.6)"
   semantic:
-    # Two themes. Dark is the brand-primary default; light is opt-in via
-    # <html data-theme="light">. Each token below lists { dark, light }.
+    # Two themes. Light is the default; dark is opt-in via
+    # <html data-theme="dark">. Each token below lists { dark, light }.
     primary:
       accent:       { dark: "#1940ed", light: "#1940ed" }   # blue-500 (brand, both)
-      accent-hover: { dark: "#3f5ff0", light: "#0f2fbf" }   # light darkens for contrast
-      accent-press: { dark: "#0f2fbf", light: "#0a228f" }
+      accent-hover: { dark: "#3f5ff0", light: "#3f5ff0" }   # chroma parity across themes
+      accent-press: { dark: "#0f2fbf", light: "#0f2fbf" }
       accent-soft:  { dark: "rgba(25,64,237,0.12)", light: "rgba(25,64,237,0.10)" }
       accent-wash:  { dark: "#0a1840", light: "#ebeefe" }   # selected fee-card fill
     secondary:
@@ -90,16 +90,16 @@ colors:
       fg-num-frac:   { dark: "#9ca3af", light: "#6e758d" }  # dropped balance decimal
       fg-on-primary: { dark: "#ffffff", light: "#ffffff" }  # text on blue-500
     status:
-      success: { dark: "#15e4a3", light: "#0a8862" }        # darker on light
-      danger:  { dark: "#fa2c37", light: "#d11424" }
-      warning: { dark: "#f0b000", light: "#b78400" }
-      info:    { dark: "#657ff3", light: "#1940ed" }
+      success: { dark: "#15e4a3", light: "#15e4a3" }        # same hue in both themes
+      danger:  { dark: "#fa2c37", light: "#fa2c37" }
+      warning: { dark: "#f0b000", light: "#f0b000" }
+      info:    { dark: "#657ff3", light: "#657ff3" }
     success_solid:    # solid Receive button / green tag
-      bg: { dark: "#15e4a3", light: "#0a8862" }
-      fg: { dark: "#011a0f", light: "#ffffff" }
+      bg: { dark: "#15e4a3", light: "#15e4a3" }
+      fg: { dark: "#011a0f", light: "#011a0f" }
     badges:
       pos-bg: { dark: "#075c42", light: "#c7f9e1" }
-      pos-fg: { dark: "#15e4a3", light: "#0a8862" }
+      pos-fg: { dark: "#15e4a3", light: "#15e4a3" }
       neg-bg: { dark: "#420409", light: "#fee2e2" }
       neg-fg: { dark: "#f59999", light: "#a30c1a" }
     misc:
@@ -343,10 +343,10 @@ No backdrop-blur, no alpha-overlay dimming; dim states use a flat darker fill. *
 
 ## 5a. Theming (Dark + Light)
 
-The system ships **two themes**. **Dark is the brand-primary default** and applies with no attribute (defined on `:root`). **Light is opt-in** — set `data-theme="light"` on `<html>` (or any ancestor) and every component re-themes, because all component colors flow through the semantic tokens (`--bg`, `--fg-1`, `--accent`, `--border`, badges…). The raw palette, type, spacing, radii and motion tokens are theme-agnostic and are not redefined.
+The system ships **two themes**. **Light is the default** and applies with no attribute (defined on `:root`). **Dark is opt-in** — set `data-theme="dark"` on `<html>` (or any ancestor) and every component re-themes, because all component colors flow through the semantic tokens (`--bg`, `--fg-1`, `--accent`, `--border`, badges…). The raw palette, type, spacing, radii and motion tokens are theme-agnostic and are not redefined.
 
 ```html
-<html data-theme="light">   <!-- opt into light; omit (or "dark") for the default -->
+<html data-theme="dark">   <!-- opt into dark; omit (or "light") for the default -->
 ```
 
 **Light remap (the deltas that matter):**
@@ -358,16 +358,16 @@ The system ships **two themes**. **Dark is the brand-primary default** and appli
 | `--bg-chip` | `#1f2937` | `#f3f4f6` | Chips / gray buttons |
 | `--border` | `#1e2232` | `#e5e7eb` | Hairline steps up to read on white |
 | `--fg-1` / `--fg-2` | `#fff` / `#d1d5db` | `#0e0e18` / `#374151` | Inverted text ramp |
-| `--accent-hover` / `-press` | `#3f5ff0` / `#0f2fbf` | `#0f2fbf` / `#0a228f` | Blue **darkens** on light for contrast |
-| `--success` | `#15e4a3` | `#0a8862` | Green-500 is too pale on white |
-| `--danger` / `--warning` | `#fa2c37` / `#f0b000` | `#d11424` / `#b78400` | Darker steps for legibility |
+| `--accent-hover` / `-press` | `#3f5ff0` / `#0f2fbf` | `#3f5ff0` / `#0f2fbf` | Keep action blue behavior identical across themes |
+| `--success` | `#15e4a3` | `#15e4a3` | Keep semantic green identical across themes |
+| `--danger` / `--warning` | `#fa2c37` / `#f0b000` | `#fa2c37` / `#f0b000` | Keep semantic red/yellow identical across themes |
 | delta badges | dark fill + bright fg | tinted fill + dark fg | `green-100`/`red-100` backgrounds |
 | `--shadow-card` | `none` | `0 1px 3px rgba(0,0,0,0.08)` | **See below** |
 
 **Where light intentionally breaks the dark rules:**
 - **Light permits a soft card shadow** (`--shadow-card`). On black, flat hairline borders define a card; on white those borders nearly vanish, so light mode re-introduces the elevation that dark deliberately bans. This is a conscious divergence, not an inconsistency.
-- **Accent/status colors shift to darker scale steps** on light (blue hover, green, red, yellow), trading the dark theme's electric vividness for legible contrast on white.
-- The solid **Receive / success** button flips from *bright fill + dark ink* (dark) to *darker fill + white ink* (light).
+- **Accent and status chroma remain the same** in both themes (`blue-400/600`, `green-500`, `red-500`, `yellow-500`, orange identity), preserving token parity across dark and light.
+- The solid **Receive / success** button keeps the same bright fill + dark ink treatment in both themes.
 
 Vivid **Tag** fills (`preview` red, `mainnet` blue, `beta` yellow) are loud labels by design and stay on the same brand palette in both themes — only their dot-ring adapts.
 
