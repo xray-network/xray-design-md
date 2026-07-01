@@ -1,0 +1,436 @@
+---
+# ============================================================================
+# XRAY Design System — machine-parseable tokens
+# Dark-theme defaults. All hex verified against the source kit.
+# ============================================================================
+meta:
+  name: XRAY Design System
+  tagline: "Content-first finance — a quiet canvas, one electric blue, data is the only color"
+  theme: dark            # brand-primary default
+  themes: [dark, light]  # light is opt-in via <html data-theme="light">
+  namespace: XRAYDesignSystem_b0c12a
+
+colors:
+  palette:
+    blue:
+      50:  "#ebeefe"
+      100: "#d4dafd"
+      200: "#abb5fb"
+      300: "#657ff3"
+      400: "#3f5ff0"   # hover
+      500: "#1940ed"   # PRIMARY — CTAs, active, brand dot
+      600: "#0f2fbf"   # pressed
+      700: "#0a228f"
+      800: "#061660"
+      900: "#030a30"
+      950: "#010518"
+    gray:
+      50:  "#f9fafb"
+      100: "#f3f4f6"
+      200: "#e5e7eb"
+      300: "#d1d5db"   # secondary text
+      400: "#9ca3af"
+      500: "#6e758d"   # meta text
+      600: "#55556d"   # tiny meta / footer
+      700: "#374151"   # input focus border
+      800: "#1f2937"   # chip + secondary button bg
+      900: "#1e2232"   # hairline borders
+      950: "#0e0e18"   # panel / card bg
+    green:
+      300: "#4eeaa3"
+      500: "#15e4a3"   # primary — success/send/online
+      700: "#0a8862"
+      800: "#075c42"   # success badge bg
+    red:
+      300: "#f59999"
+      500: "#fa2c37"   # primary — danger/preview tag
+      700: "#a30c1a"
+      900: "#420409"   # danger badge bg
+    orange:
+      400: "#ff6900"
+      500: "#f85e08"   # chain identity (NIGHT), avatar segments
+      700: "#9a2400"
+    yellow:
+      400: "#f7c20b"
+      500: "#f0b000"   # caution, BTC accent, stake saturation
+    base:
+      white: "#ffffff"
+      black: "#000000"
+  opacity_variants:
+    border-soft:  "rgba(255,255,255,0.06)"   # divider on chip
+    accent-soft:  "rgba(25,64,237,0.12)"     # blue-500 @ 12%
+    shadow-menu:  "rgba(0,0,0,0.5)"
+    shadow-modal: "rgba(0,0,0,0.6)"
+  semantic:
+    # Two themes. Dark is the brand-primary default; light is opt-in via
+    # <html data-theme="light">. Each token below lists { dark, light }.
+    primary:
+      accent:       { dark: "#1940ed", light: "#1940ed" }   # blue-500 (brand, both)
+      accent-hover: { dark: "#3f5ff0", light: "#0f2fbf" }   # light darkens for contrast
+      accent-press: { dark: "#0f2fbf", light: "#0a228f" }
+      accent-soft:  { dark: "rgba(25,64,237,0.12)", light: "rgba(25,64,237,0.10)" }
+      accent-wash:  { dark: "#0a1840", light: "#ebeefe" }   # selected fee-card fill
+    secondary:
+      bg-chip:      { dark: "#1f2937", light: "#f3f4f6" }
+      bg-hover:     { dark: "#2a3142", light: "#e5e7eb" }
+    surfaces:
+      bg:        { dark: "#000000", light: "#f9fafb" }      # root canvas
+      bg-panel:  { dark: "#0e0e18", light: "#ffffff" }      # cards, panels
+      bg-chip:   { dark: "#1f2937", light: "#f3f4f6" }      # selected chip, gray buttons
+      bg-input:  { dark: "transparent", light: "transparent" }
+    borders:
+      border:        { dark: "#1e2232", light: "#e5e7eb" }  # 1px panel hairline
+      border-strong: { dark: "#1f2937", light: "#d1d5db" }  # input / focus
+      border-soft:   { dark: "rgba(255,255,255,0.06)", light: "rgba(0,0,0,0.06)" }
+    foreground:
+      fg-1:          { dark: "#ffffff", light: "#0e0e18" }  # primary text, headings
+      fg-2:          { dark: "#d1d5db", light: "#374151" }  # secondary text
+      fg-3:          { dark: "#6e758d", light: "#6e758d" }  # meta (reads on both)
+      fg-4:          { dark: "#55556d", light: "#9ca3af" }  # low-contrast meta
+      fg-num-frac:   { dark: "#9ca3af", light: "#6e758d" }  # dropped balance decimal
+      fg-on-primary: { dark: "#ffffff", light: "#ffffff" }  # text on blue-500
+    status:
+      success: { dark: "#15e4a3", light: "#0a8862" }        # darker on light
+      danger:  { dark: "#fa2c37", light: "#d11424" }
+      warning: { dark: "#f0b000", light: "#b78400" }
+      info:    { dark: "#657ff3", light: "#1940ed" }
+    success_solid:    # solid Receive button / green tag
+      bg: { dark: "#15e4a3", light: "#0a8862" }
+      fg: { dark: "#011a0f", light: "#ffffff" }
+    badges:
+      pos-bg: { dark: "#075c42", light: "#c7f9e1" }
+      pos-fg: { dark: "#15e4a3", light: "#0a8862" }
+      neg-bg: { dark: "#420409", light: "#fee2e2" }
+      neg-fg: { dark: "#f59999", light: "#a30c1a" }
+    misc:
+      dot-ring: { dark: "rgba(0,0,0,0.35)", light: "rgba(255,255,255,0.85)" }
+
+typography:
+  families:
+    sans:    '"Satoshi Variable", "Satoshi", -apple-system, BlinkMacSystemFont, system-ui, sans-serif'
+    display: '"Satoshi", "Satoshi Variable", system-ui, sans-serif'
+    mono:    '"DM Mono", "Fira Mono", ui-monospace, "SF Mono", Menlo, monospace'
+  weights:
+    regular: 400   # dense table values
+    medium:  500   # body, buttons
+    bold:    700   # headings
+    black:   900   # balance numerics only
+  size_scale:
+    fs-12:  "12px"      # footer, legal
+    fs-14:  "14px"      # meta, labels, addresses
+    fs-16:  "16px"      # body, button label
+    fs-18:  "18px"      # card title
+    fs-20:  "20.57px"   # DM Mono token label (exact)
+    fs-24:  "24px"      # section heading
+    fs-30:  "30px"      # page heading
+    fs-48:  "48px"      # balance numeric
+    fs-54:  "54px"      # hero numeric
+    fs-140: "140px"     # wordmark cover
+  roles:
+    h1:        { family: sans, weight: 700, size: "30px",    line_height: 1.0, tracking: "-0.01em", color: fg-1 }
+    h2:        { family: sans, weight: 700, size: "24px",    line_height: 1.1, tracking: "0",       color: fg-1 }
+    h3:        { family: sans, weight: 700, size: "18px",    line_height: 1.2, tracking: "0",       color: fg-1 }
+    body:      { family: sans, weight: 500, size: "16px",    line_height: 1.4, tracking: "0",       color: fg-2 }
+    body-bold: { family: sans, weight: 700, size: "16px",    line_height: 1.4, tracking: "0",       color: fg-1 }
+    label:     { family: sans, weight: 500, size: "14px",    line_height: 1.3, tracking: "0",       color: fg-2 }
+    meta:      { family: sans, weight: 500, size: "14px",    line_height: 1.3, tracking: "0",       color: fg-3 }
+    meta-small:{ family: sans, weight: 500, size: "12px",    line_height: 1.3, tracking: "0",       color: fg-4 }
+    mono:      { family: mono, weight: 500, size: "20.57px", line_height: 1.1, tracking: "0.058em", transform: uppercase, color: fg-1 }
+    address:   { family: mono, weight: 500, size: "14px",    line_height: 1.3, tracking: "0",       color: fg-1 }
+    numeric:   { family: sans, weight: 900, size: "48px",    line_height: 1.0, tracking: "-0.02em", color: fg-1 }
+    numeric-fraction: { size: "0.55em", color: fg-2 }
+
+spacing:
+  base_unit: "4px"
+  scale:
+    space-1:  "4px"
+    space-2:  "8px"
+    space-3:  "12px"
+    space-4:  "16px"
+    space-5:  "20px"
+    space-6:  "24px"
+    space-8:  "32px"
+    space-10: "40px"
+    space-12: "48px"
+    space-16: "64px"
+  layout:
+    sidebar_width: "265px"
+    content_gutter: "16px"
+    panel_inset: "11px"
+
+radius:
+  radius-sm:   "8px"       # small swatches
+  radius-md:   "12.43px"   # rail icon tile (exact)
+  radius-lg:   "16.66px"   # mini-app tile (exact)
+  radius-xl:   "20px"      # card / panel / sidebar
+  radius-pill: "100px"     # button, chip, address pill, asset row
+  radius-full: "50%"       # avatars, status dots
+
+elevation:
+  philosophy: "Flat on DARK — 1px hairline borders carry everyday elevation; shadows only on floating surfaces. LIGHT reintroduces a soft card shadow because hairlines vanish on white."
+  levels:
+    base:    { bg: { dark: "#000000", light: "#f9fafb" } }
+    surface: { bg: { dark: "#0e0e18", light: "#ffffff" }, border: { dark: "1px solid #1e2232", light: "1px solid #e5e7eb" } }
+    chip:    { bg: { dark: "#1f2937", light: "#f3f4f6" }, border: none }
+  shadows:
+    shadow-card:  { dark: "none",                      light: "0 1px 3px rgba(0,0,0,0.08)" }
+    shadow-menu:  { dark: "0 4px 12px rgba(0,0,0,0.5)", light: "0 4px 12px rgba(0,0,0,0.12)" }
+    shadow-modal: { dark: "0 16px 40px rgba(0,0,0,0.6)", light: "0 16px 40px rgba(0,0,0,0.16)" }
+
+motion:
+  ease:          "cubic-bezier(0.16, 1, 0.3, 1)"
+  duration_fast: "120ms"   # button feedback
+  duration_base: "180ms"   # panel open, hover
+  duration_slow: "280ms"   # modal entrance
+
+components:
+  Button:
+    geometry: { height: "40px", radius: "100px", padding: "0 18px", font: "16px/500 sans" }
+    variants:
+      primary: { bg: blue-500, text: white }
+      gray:    { bg: gray-800, text: white }
+      outline: { bg: transparent, border: "1px gray-900", text: white }
+      success: { bg: green-500, text: green-950 }
+    states:
+      hover:   { primary_bg: blue-400, gray_bg: bg-hover }
+      press:   { primary_bg: blue-600 }
+      disabled:{ opacity: reduced }
+  Tag:
+    geometry: { height: "22px", padding: "0 10px", radius: "26-32px", dot_size: "12px" }
+    variants:
+      preview:       { bg: red-500,    text: white }
+      mainnet:       { bg: blue-500,   text: white }
+      beta:          { bg: yellow-500, text: black }
+      status-online: { dot: green-500 }
+      status-down:   { dot: red-500 }
+      status-slow:   { dot: yellow-500 }
+      delta-pos:     { bg: green-800, text: green-500 }
+      delta-neg:     { bg: red-900,   text: red-300 }
+  AccountAvatar:
+    description: "40×40 round, 4-segment geometric brand mark"
+    props: { palette: [ada, btc, night, xray, cool], size: "40px" }
+    palettes:
+      ada:   ["#f0b000","#1886ee","#f85e08","#da186f"]
+      btc:   ["#1940ed","#f85e08","#da186f","#ffb869"]
+      night: ["#ffb869","#ca3500","#f85e08","#fa2c37"]
+      xray:  ["#0fb381","#15e4a3","#1940ed","#021"]
+      cool:  ["#1940ed","#15e4a3","#657ff3","#0a228f"]
+    states: [static]
+  AssetRow:
+    geometry: { height: "60px", radius: "100px", padding: "0 18px 0 10px", avatar: "40px", text: "17px" }
+    variants:
+      filled: { bg: gray-800 }
+      idle:   { bg: transparent, border: "1px gray-900" }
+    states:
+      delta-positive: { badge_bg: green-800, badge_text: green-500 }
+      delta-negative: { badge_bg: red-900,   badge_text: red-300 }
+  BalanceCard:
+    geometry: { padding: "28px 32px", radius: "20px", bg: panel, border: "1px gray-900" }
+    parts:
+      label:    { font: "14px/500 sans", color: gray-500, transform: uppercase, tracking: "0.08em" }
+      integer:  { font: "64px/900 sans", color: white, tracking: "-0.02em" }
+      fraction: { font: "36px/700 sans", color: gray-400 }
+      ticker:   { font: "20px/700 sans", color: gray-500 }
+    states: [static]
+  PaymentForm:
+    geometry: { width: "460px", padding: "28px", radius: "20px", bg: panel, border: "1px gray-900" }
+    fields:
+      from-account: { type: chip,          bg: gray-800,            radius: "100px", height: "40px" }
+      to-address:   { type: input,         border: "1px gray-900",  radius: "100px", height: "40px", font: mono }
+      asset-select: { type: native-select, border: "1px gray-900",  radius: "100px", height: "40px", font: mono }
+      amount:       { type: input,         font: "mono/700",        suffix: [MAX-button, ticker] }
+      note:         { type: input,         optional: true }
+    fee_radio:
+      options:
+        slow:     { note: "~5 min", fee: "0.12 ADA" }
+        standard: { note: "~20 s",  fee: "0.17 ADA" }
+        fast:     { note: "~5 s",   fee: "0.42 ADA" }
+      states:
+        selected:   { bg: "#0a1840", border: "1px blue-500", radio: "4px blue-500 ring" }
+        unselected: { bg: transparent, border: "1px gray-900", radio: "2px gray-600 ring" }
+    badges:
+      secured: { bg: green-800, text: green-500, icon: shield-check }
+    submit:
+      cta: { height: "48px", radius: "100px", bg: blue-500, text: white, font: "16px/700", icon: paper-airplane }
+
+iconography:
+  system_icons:  { set: "Heroicons outline v1", viewbox: "24×24", stroke: "~1.5px", color: white }
+  product_icons: { tile: "60×60 (44.76 on rail)", bg: gray-800, radius: "16.66px", top_strip: "6px blue-500", glyph: "white centered" }
+  avatars:       { size: "40×40", segments: 4, shape: "geometric pie" }
+  emoji: none
+---
+
+# XRAY Design System
+
+## 1. Overview
+
+**Content-first finance — a quiet canvas where one electric blue carries every action and the data is the only color.**
+
+XRAY/Network is a multi-blockchain mini app hub — a single shell hosting a catalog of crypto mini apps, backed by a crypto API provider (unified on-chain data APIs across multiple chains) and a mini app builder for composing new apps on top of them. The design language treats balances, addresses, and data tables as the subject: the UI recedes into hairline-bordered panels on pure black, and chroma comes from the content itself (token tickers, deltas, the geometric account avatars), not from decoration. Capsule geometry, a systematic mono "machine voice" for on-chain data, and a price-tag treatment for numerics define the feel.
+
+**At a glance:**
+- Pure-black immersive theme — `#000` → `#0e0e18` → `#1f2937`
+- XRAY Blue (`#1940ed`) is the *only* brand accent — functional, never decorative
+- Green (`#15e4a3`) is the "do-it" color — send, receive, online, success
+- Satoshi Variable for UI; DM Mono for addresses, hashes, tokens
+- Capsules everywhere (`100px` pills); `50%` for avatars
+- Flat on dark: `1px` hairline borders, not shadows, do the elevation work
+- No emoji, no gradients, no photography, no illustration
+- **Two themes** — dark and light — switchable via `<html data-theme="…">` (see §5a)
+
+---
+
+## 2. Color Tokens
+
+All tokens are in the YAML frontmatter under `colors`. Roles:
+
+**Primary** — `accent` (`#1940ed`) drives CTAs, active nav, selected chips, and the wordmark dot. Hover lifts one step to `#3f5ff0`; press drops to `#0f2fbf`. Use it sparingly — at most one blue element per visual region.
+
+**Secondary** — `bg-chip` (`#1f2937`) is the neutral surface for gray buttons and selected chips; `bg-hover` (`#2a3142`) is its hover.
+
+**Accent / status** — Green (`#15e4a3`) for success/send/online; Red (`#fa2c37`) for danger and the `preview` testnet tag; Orange (`#f85e08`) for chain identity (NIGHT) and avatar segments; Yellow (`#f0b000`) for caution and the BTC accent.
+
+**Surfaces** layer in exactly three steps: `bg` (`#000`) → `bg-panel` (`#0e0e18`) → `bg-chip` (`#1f2937`). Nothing else.
+
+**Foreground** runs four contrast steps: `fg-1` white headings → `fg-2` (`#d1d5db`) secondary → `fg-3` (`#6e758d`) meta → `fg-4` (`#55556d`) low-contrast footer/`id:`.
+
+**Borders** are the workhorses: `border` (`#1e2232`) is the near-invisible 1px hairline; `border-strong` (`#1f2937`) marks inputs and focus; `border-soft` (`rgba(255,255,255,0.06)`) divides inside chips.
+
+---
+
+## 3. Typography
+
+**Families:** Satoshi Variable for all UI and display; DM Mono for machine data (addresses, tx hashes, color tokens, `id:` fields). Nothing else.
+
+**Weights:** 400 dense table values · 500 body & buttons · 700 headings · **900 reserved exclusively for balance numerics.**
+
+**Scale & roles** are in the frontmatter under `typography`. Headings sit at `line-height: 1`; body at 1.4. Three principles:
+
+- **Weight contrast over size variation** — most text is 500 or 700; size changes are small and deliberate.
+- **Mono is the machine voice** — wide uppercase tracking (`0.058em`) on tokens gives on-chain data a systematic feel distinct from content.
+- **The price-tag numeral** — balances render the integer in Satoshi Black, the decimal fraction at ~55% size in muted gray, and the ticker small and uppercase after: `1,252,251`**`.254221`** `ADA`.
+
+---
+
+## 4. Spacing & Layout Grid
+
+Base unit **4px**; scale 4 / 8 / 12 / 16 / 20 / 24 / 32 / 40 / 48 / 64 (`space-1` … `space-16`).
+
+- **Sidebar** fixed at ~265px + main content canvas filling the rest.
+- The whole app is wrapped in a `20px`-radius panel inset ~11px from a pure-black frame — *panel inside the void*.
+- Main content gutter is `16px` from the sidebar; asset rows are `56–60px` tall and `8px` apart.
+- **Dark compression:** content packs densely — the black background supplies the rest between elements, so gaps stay tight. Every pixel serves the data, not breathing room.
+
+---
+
+## 5. Radius, Shadow & Elevation
+
+**Radius:** `8px` swatches · `12.43px` rail tiles · `16.66px` mini-app tiles · `20px` cards/panels · `100px` pills (buttons, chips, rows) · `50%` avatars. (The two odd values are exact to the source kit.)
+
+**Elevation is flat.** XRAY leans on *borders*, not shadows, for everyday depth — a `1px` `#1e2232` hairline is enough to lift a card against pure black.
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Base | `#000000` bg | Root canvas |
+| Surface | `#0e0e18` + `1px #1e2232` | Cards, panels, sidebar |
+| Chip | `#1f2937` fill, no border | Selected chips, gray buttons |
+| Menu | `0 4px 12px rgba(0,0,0,0.5)` | Dropdowns, popovers |
+| Modal | `0 16px 40px rgba(0,0,0,0.6)` | Dialogs, overlays |
+
+No backdrop-blur, no alpha-overlay dimming; dim states use a flat darker fill. **Motion** is composed and geometric — `cubic-bezier(0.16,1,0.3,1)`, 120–280ms, no bounce or spring.
+
+---
+
+## 5a. Theming (Dark + Light)
+
+The system ships **two themes**. **Dark is the brand-primary default** and applies with no attribute (defined on `:root`). **Light is opt-in** — set `data-theme="light"` on `<html>` (or any ancestor) and every component re-themes, because all component colors flow through the semantic tokens (`--bg`, `--fg-1`, `--accent`, `--border`, badges…). The raw palette, type, spacing, radii and motion tokens are theme-agnostic and are not redefined.
+
+```html
+<html data-theme="light">   <!-- opt into light; omit (or "dark") for the default -->
+```
+
+**Light remap (the deltas that matter):**
+
+| Token | Dark | Light | Why |
+|-------|------|-------|-----|
+| `--bg` | `#000000` | `#f9fafb` | Page canvas |
+| `--bg-panel` | `#0e0e18` | `#ffffff` | Panel stays brighter than page |
+| `--bg-chip` | `#1f2937` | `#f3f4f6` | Chips / gray buttons |
+| `--border` | `#1e2232` | `#e5e7eb` | Hairline steps up to read on white |
+| `--fg-1` / `--fg-2` | `#fff` / `#d1d5db` | `#0e0e18` / `#374151` | Inverted text ramp |
+| `--accent-hover` / `-press` | `#3f5ff0` / `#0f2fbf` | `#0f2fbf` / `#0a228f` | Blue **darkens** on light for contrast |
+| `--success` | `#15e4a3` | `#0a8862` | Green-500 is too pale on white |
+| `--danger` / `--warning` | `#fa2c37` / `#f0b000` | `#d11424` / `#b78400` | Darker steps for legibility |
+| delta badges | dark fill + bright fg | tinted fill + dark fg | `green-100`/`red-100` backgrounds |
+| `--shadow-card` | `none` | `0 1px 3px rgba(0,0,0,0.08)` | **See below** |
+
+**Where light intentionally breaks the dark rules:**
+- **Light permits a soft card shadow** (`--shadow-card`). On black, flat hairline borders define a card; on white those borders nearly vanish, so light mode re-introduces the elevation that dark deliberately bans. This is a conscious divergence, not an inconsistency.
+- **Accent/status colors shift to darker scale steps** on light (blue hover, green, red, yellow), trading the dark theme's electric vividness for legible contrast on white.
+- The solid **Receive / success** button flips from *bright fill + dark ink* (dark) to *darker fill + white ink* (light).
+
+Vivid **Tag** fills (`preview` red, `mainnet` blue, `beta` yellow) are loud labels by design and stay on the same brand palette in both themes — only their dot-ring adapts.
+
+---
+
+## 6. Components
+
+Full anatomy, variants, and states are in the frontmatter under `components`. Summary:
+
+**Button** — capsule, `40px` tall, `100px` radius, `0 18px` padding, 16px/500. Variants: primary (blue), gray, outline, success (green-on-dark-green). Hover lifts the action color one step; press darkens one step.
+
+**Tag / Badge** — `22px` capsule. Tags: `preview` (red), `mainnet` (blue), `beta` (yellow). Status badges carry a `12px` dot (green online / red down / yellow slow). Delta badges: green-on-`green-800` positive, red-on-`red-900` negative.
+
+**AccountAvatar** — the signature mark: `40×40` round, four hard-edged geometric segments in a brand palette (`ada` / `btc` / `night` / `xray` / `cool`). Static.
+
+**AssetRow** — `60px` pill; filled (`gray-800`, selected) or idle (transparent + hairline). Avatar, mono ticker, right-aligned balance, trailing delta badge.
+
+**BalanceCard** — the price-tag numeral in a `20px` panel: uppercase label, 64px Black integer, dropped 36px fraction, 20px ticker.
+
+**PaymentForm** — rich send form in a `460px` panel: from-account chip, to-address input, asset `<select>`, amount with MAX + ticker, a three-up **fee radio-card** group (Slow/Standard/Fast, each ETA + fee — selected card gets `#0a1840` fill + blue border + filled radio), optional note, total-with-fee summary, a `48px` blue Send CTA, and a green **Secured** shield badge + footnote.
+
+---
+
+## 7. Layout Conventions
+
+- **Page structure:** fixed left rail (wordmark + `preview` tag → search → primary CTA → account list → mini-app launcher grid → footer links) beside a content canvas (page heading 30px → hero numeric / balance → data table → action drawer).
+- **Top nav** is a row of capsule pills (`Default` / `Select` / `Small Gray`) — never icon-only.
+- **Mini-app tiles** are the recurring motif: `60×60` (`44.76` on the rail) `#1f2937` square, `16.66px` radius, with a **6px `#1940ed` strip across the top edge** and a white glyph centered. First- and third-party apps all use it.
+- **Brand line** anchors the bottom of every screen: `Privacy Policy · Terms of Service` (middle dots, never pipes).
+
+---
+
+## 8. Voice & Tone
+
+Terse, technical, second-person. The product addresses "you / your" and never says "we."
+
+- **Casing:** Title Case for nav, buttons, section headers ("Send Assets", "All Filters"); sentence case for descriptions and helper text ("Official wallet for managing your assets.").
+- **Numbers:** punctuated, with the price-tag numeral. Tickers (ADA, BTC, XRAY, NIGHT) follow the number, uppercase.
+- **Addresses:** always truncated `addr1q…azf5ek`, in mono, with a small explorer-link glyph.
+- **`id:` fields** appear in low-contrast mono on nav cards (`id: wallet`) — a deliberate developer/on-chain flavor.
+- **No emoji**, ever. The only decorative Unicode is the middle dot in the footer.
+- **Sample voice:** "All Cardano payments are protected with advanced blockchain encryption and multi-layer authentication, ensuring your transactions remain private and tamper-proof." — measured, no hyperbole.
+
+---
+
+## 9. Do's and Don'ts
+
+### Do
+- Build on pure black — `#000` → `#0e0e18` → `#1f2937`; depth through shade
+- Use XRAY Blue only for actions, active states, and the brand dot — one blue element per region
+- Use Green for the functional "do-it" role (send, receive, online, success)
+- Pill everything — `100px` buttons/chips/rows, `50%` avatars
+- On **dark**, let borders carry elevation; reserve shadows for menus and modals
+- On **light**, use the soft `--shadow-card` — hairlines alone don't hold a card on white
+- Drive all component color through semantic tokens (`--bg`, `--fg-1`, `--accent`…) so both themes flow through automatically
+- Use DM Mono for all machine data, and the price-tag numeral for balances
+- Keep type compact — headings at `line-height: 1`
+
+### Don't
+- Don't use Blue decoratively or as a background wash — it's functional only
+- Don't add colored left-border accent cards, multi-stop gradients, or glows
+- Don't introduce photography, illustration, textures, or patterns — none exist in the system
+- Don't use emoji, Unicode-glyphs-as-icons, or filled (solid) heroicons
+- Don't put thin/subtle shadows on cards **in dark** — borders do that job there (light is the exception, via `--shadow-card`)
+- Don't hardcode hex values in components — use semantic tokens, or a theme will break
+- Don't relax line-heights or let whitespace sprawl — XRAY is dense and dark
