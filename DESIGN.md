@@ -8,7 +8,7 @@ meta:
   tagline: "Content-first finance — a quiet canvas, one electric blue, data is the only color"
   theme: light           # default
   themes: [light, dark]  # dark is opt-in via <html data-theme="dark">
-  namespace: XRAYDesignSystem_b0c12a
+  namespace: XRAYDesignSystem_f24189
 
 colors:
   palette:
@@ -107,9 +107,9 @@ colors:
 
 typography:
   families:
-    sans:    '"Satoshi Variable", "Satoshi", -apple-system, BlinkMacSystemFont, system-ui, sans-serif'
-    display: '"Satoshi", "Satoshi Variable", system-ui, sans-serif'
-    mono:    '"DM Mono", "Fira Mono", ui-monospace, "SF Mono", Menlo, monospace'
+    sans:    '"-apple-system-body", "ui-sans-serif", "-apple-system", "system-ui", "Segoe UI", "Helvetica", "Apple Color Emoji", "Arial", "sans-serif", "Segoe UI Emoji", "Segoe UI Symbol"'
+    display: '"-apple-system-body", "ui-sans-serif", "-apple-system", "system-ui", "Segoe UI", "Helvetica", "Apple Color Emoji", "Arial", "sans-serif", "Segoe UI Emoji", "Segoe UI Symbol"'
+    mono:    '"ui-monospace", "SFMono-Regular", "SF Mono", "Menlo", "Consolas", "Liberation Mono", "monospace"'
   weights:
     regular: 400   # dense table values
     medium:  500   # body, buttons
@@ -117,10 +117,10 @@ typography:
     black:   900   # balance numerics only
   size_scale:
     fs-12:  "12px"      # footer, legal
-    fs-14:  "14px"      # meta, labels, addresses
-    fs-16:  "16px"      # body, button label
+    fs-14:  "14px"      # default body, meta, labels, addresses
+    fs-16:  "16px"      # emphasized controls and button labels
     fs-18:  "18px"      # card title
-    fs-20:  "20.57px"   # DM Mono token label (exact)
+    fs-20:  "20.57px"   # mono token label (exact)
     fs-24:  "24px"      # section heading
     fs-30:  "30px"      # page heading
     fs-48:  "48px"      # balance numeric
@@ -130,8 +130,8 @@ typography:
     h1:        { family: sans, weight: 700, size: "30px",    line_height: 1.0, tracking: "-0.01em", color: fg-1 }
     h2:        { family: sans, weight: 700, size: "24px",    line_height: 1.1, tracking: "0",       color: fg-1 }
     h3:        { family: sans, weight: 700, size: "18px",    line_height: 1.2, tracking: "0",       color: fg-1 }
-    body:      { family: sans, weight: 500, size: "16px",    line_height: 1.4, tracking: "0",       color: fg-2 }
-    body-bold: { family: sans, weight: 700, size: "16px",    line_height: 1.4, tracking: "0",       color: fg-1 }
+    body:      { family: sans, weight: 500, size: "14px",    line_height: 1.4, tracking: "0",       color: fg-2 }
+    body-bold: { family: sans, weight: 700, size: "14px",    line_height: 1.4, tracking: "0",       color: fg-1 }
     label:     { family: sans, weight: 500, size: "14px",    line_height: 1.3, tracking: "0",       color: fg-2 }
     meta:      { family: sans, weight: 500, size: "14px",    line_height: 1.3, tracking: "0",       color: fg-3 }
     meta-small:{ family: sans, weight: 500, size: "12px",    line_height: 1.3, tracking: "0",       color: fg-4 }
@@ -272,7 +272,7 @@ XRAY/Network is a multi-blockchain mini app hub — a single shell hosting a cat
 - Pure-black immersive theme — `#000` → `#0e0e18` → `#1f2937`
 - XRAY Blue (`#1940ed`) is the *only* brand accent — functional, never decorative
 - Green (`#15e4a3`) is the "do-it" color — send, receive, online, success
-- Satoshi Variable for UI; DM Mono for addresses, hashes, tokens
+- System sans-serif stack for UI; system monospace stack for addresses, hashes, tokens
 - Capsules everywhere (`100px` pills); `50%` for avatars
 - Flat on dark: `1px` hairline borders, not shadows, do the elevation work
 - No emoji, no gradients, no photography, no illustration
@@ -300,15 +300,15 @@ All tokens are in the YAML frontmatter under `colors`. Roles:
 
 ## 3. Typography
 
-**Families:** Satoshi Variable for all UI and display; DM Mono for machine data (addresses, tx hashes, color tokens, `id:` fields). Nothing else.
+**Families:** The system sans-serif stack for all UI and display; the system monospace stack for machine data (addresses, tx hashes, color tokens, `id:` fields). Nothing else.
 
 **Weights:** 400 dense table values · 500 body & buttons · 700 headings · **900 reserved exclusively for balance numerics.**
 
-**Scale & roles** are in the frontmatter under `typography`. Headings sit at `line-height: 1`; body at 1.4. Three principles:
+**Scale & roles** are in the frontmatter under `typography`. The default body and UI text size is `14px`. Headings sit at `line-height: 1`; body at 1.4. Three principles:
 
 - **Weight contrast over size variation** — most text is 500 or 700; size changes are small and deliberate.
 - **Mono is the machine voice** — wide uppercase tracking (`0.058em`) on tokens gives on-chain data a systematic feel distinct from content.
-- **The price-tag numeral** — balances render the integer in Satoshi Black, the decimal fraction at ~55% size in muted gray, and the ticker small and uppercase after: `1,252,251`**`.254221`** `ADA`.
+- **The price-tag numeral** — balances render the integer at weight 900, the decimal fraction at ~55% size in muted gray, and the ticker small and uppercase after: `1,252,251`**`.254221`** `ADA`.
 
 ---
 
@@ -423,7 +423,7 @@ Terse, technical, second-person. The product addresses "you / your" and never sa
 - On **dark**, let borders carry elevation; reserve shadows for menus and modals
 - On **light**, use the soft `--shadow-card` — hairlines alone don't hold a card on white
 - Drive all component color through semantic tokens (`--bg`, `--fg-1`, `--accent`…) so both themes flow through automatically
-- Use DM Mono for all machine data, and the price-tag numeral for balances
+- Use the system monospace stack for all machine data, and the price-tag numeral for balances
 - Keep type compact — headings at `line-height: 1`
 
 ### Don't

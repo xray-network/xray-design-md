@@ -36,7 +36,8 @@
       min-height: 100vh;
       background: var(--bg);
       color: var(--fg-2);
-      font-family: "Satoshi Variable", "Satoshi", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      font-family: "-apple-system-body", "ui-sans-serif", "-apple-system", "system-ui", "Segoe UI", "Helvetica", "Apple Color Emoji", "Arial", "sans-serif", "Segoe UI Emoji", "Segoe UI Symbol";
+      font-size: 14px;
       display: block;
       padding: 24px 16px;
     }
@@ -126,7 +127,7 @@
       font-size: 12px;
       color: var(--fg-3);
       margin-top: 2px;
-      font-family: "DM Mono", "Fira Mono", ui-monospace, "SF Mono", Menlo, monospace;
+      font-family: "ui-monospace", "SFMono-Regular", "SF Mono", "Menlo", "Consolas", "Liberation Mono", "monospace";
     }
 
     .open-btn {
@@ -362,7 +363,7 @@
     </div>
 
     <section class="description-section" aria-labelledby="about-title">
-      <p class="description-text">This workspace is a focused starter for generating XRAY interface concepts from a single high-quality prompt. Copy the prompt below, use DESIGN.md as your design source of truth, and produce a clean HTML/CSS implementation with styles split into a separate CSS file.</p>
+      <p class="description-text">This workspace is a focused starter for generating XRAY interface concepts from a single high-quality prompt. Copy the prompt below, use DESIGN.md as your design source of truth, and produce one self-contained HTML file with all CSS embedded.</p>
     </section>
 
     <div class="links-section">
@@ -381,7 +382,7 @@
             </svg>
           </button>
         </div>
-        <p id="prompt-main" class="prompt-full">Create a send form UI as a pure HTML/CSS implementation (no frameworks, no build tools, no external UI libraries), with styles in a separate CSS file. Follow DESIGN.md strictly as the design source of truth: https://design-md.xray.app/DESIGN.md. Required output: 1) send-form.html, 2) send-form.css. Layout constraints: responsive on desktop and mobile, max-width 800px, centered content. Theme requirements: include a working dark/light theme toggle with #000 background in dark mode and #fff background in light mode, and ensure readable contrast in both themes. UI content: include a security icon and concise trust/security messaging. Flow requirements: implement a two-step crypto multi-asset send flow where step 1 is a form to choose multiple assets, enter amounts, and set recipient; step 2 is an awaiting-signature confirmation/loading state. Use semantic HTML, keyboard-accessible controls, clear form labels, and polished spacing/typography consistent with DESIGN.md.</p>
+        <p id="prompt-main" class="prompt-full">Create a send form UI as a single, self-contained HTML file with all CSS embedded in a &lt;style&gt; element. Use only HTML and CSS—no frameworks, build tools, external UI libraries, external stylesheets, or additional files. Follow DESIGN.md strictly as the design source of truth: https://design-md.xray.app/DESIGN.md. Required output: send-form.html only. Layout constraints: responsive on desktop and mobile, max-width 800px, centered content. Theme requirements: include a working CSS-only dark/light theme toggle with #000 background in dark mode and #fff background in light mode, and ensure readable contrast in both themes. UI content: include a security icon and concise trust/security messaging. Flow requirements: represent a two-step crypto multi-asset send flow where step 1 is a form to choose multiple assets, enter amounts, and set a recipient; step 2 is an awaiting-signature confirmation/loading state. Use semantic HTML, keyboard-accessible controls, clear form labels, and polished spacing and typography consistent with DESIGN.md. Return only the complete contents of send-form.html.</p>
       </div>
     </section>
   </main>
